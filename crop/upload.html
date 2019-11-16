@@ -1,0 +1,183 @@
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta name="hotcss" content="initial-dpr=1">
+		<meta name="robots" content="all" />
+		<title>呷哺呷哺</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+		<link rel="stylesheet" href="css/index.css?ver=201802081600" />
+		
+	</head>
+
+	<body>
+		<div class="page-fixed">
+		<audio src='bg.mp3?ver=2' autoplay='autoplay' loop='loop' id="bgmusic"></audio>
+		<div class="music"></div>
+		<div class="page-orientation">
+			<div>
+				<img src="img/hints.png?ver=1" alt="" />
+			</div>
+		</div>
+		<div class="page-code"></div>
+		<div class="page-up">
+			<img src="img/main3.png" alt="" class="img-mian3"/>
+			
+			<div class="up-box">
+				<img src="img/tu2.png" alt="" class="img-tu"/>
+				<div class="box1">
+					<canvas id="myCanvas"></canvas>
+					<img src="img/tu3.png" alt="" class="img-tu1"/>
+					<div class="gesture-area" id="gesture-area"></div>
+				</div>
+				<div class="box2" >
+					<img src="img/tu1.png" alt="" class="img-tu1"/>
+					<input type="file" name="photo" id="inputimg" class="btn-up-photo">
+				</div>
+			</div>
+			<div class="box2-botton">
+				<img src="img/font2.png" alt="" class="img-font2"/>
+			</div>
+			<div class="box1-botton"> 
+				<img src="img/font3.png" alt="" class="img-font2"/>
+				<div class="btn-small re-box">
+					<div class="btn-re"></div>
+					<input type="file" name="photo" id="imgRe">
+				</div>
+				<div class="btn-small btn-sure"></div>
+			</div>
+		</div>
+		<div class="page-man">
+			<div class="cell" style="width: 100%;height: 100%;">
+				<div >
+					<div class="man-top">
+						<img src="img/bg5.png" alt="" style="opacity: 0;"/>
+						<div id="myCaishen">
+							
+						</div>
+					</div>
+					<div class="man-footer">
+						<img src="img/font5.png" alt="" />
+						<div class="btn-small btn-re1"></div>
+						<div class="btn-small btn-git"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-friend">
+			<div class="cell" style="width: 100%;height: 100%;">
+				<div>
+					<div class="man-top">
+						
+					</div>
+					<div class="man-footer man-footer1">
+						<div class="btn-medium btn-friends"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-win">
+			<img src="img/main5.png" alt="" class="img-mian5"/>
+			<img src="img/main3.png" alt="" class="img-mian3"/>
+			<div class="win-box">
+				
+			</div>
+		</div>
+		<div class="page-share">
+			<img src="img/shareImg.png?ver=5" alt="" />
+		</div>
+		<div class="page-err">
+			<div class="err-box5">
+				<img src="img/box.png" alt="" class="img-box"/>
+				<div class="msg-box">
+					<div class="err-msg"></div>
+				</div>
+				<div class="btn-medium btn-Refresh"></div>
+			</div>
+		</div>
+		<div class="page-msg">
+			<div class="err-box1">
+				<img src="img/box.png" alt="" class="img-box"/>
+				<div class="msg-box">
+					<div class="err-msg"></div>
+				</div>
+				<div class="btn-medium btn-too1"></div>
+			</div>
+			<div class="err-box2">
+				<img src="img/box2.png" alt="" class="img-box"/>
+			</div>
+			<div class="err-box3">
+				<img src="img/box3.png" alt="" class="img-box"/>
+			</div>
+		</div>
+		
+		</div>
+		<input type="hidden" value="<%=AppId %>" id="aid" />
+		<input type="hidden" value="<%=UmqUserOpenId %>" id="umqUserOpenId" />
+		<input type="hidden" value="<%=openId %>" id="openId" />
+		<input type="hidden" value="<%=actId %>" id="actId" />
+		<input type="hidden" value="<%=prodId %>" id="pid" />
+		<input type="hidden" value="<%=actId1 %>" id="actId1" />
+		<input type="hidden" value="<%=prodId1 %>" id="pid1" />
+		<input type="hidden" value="" id="mediaId" />
+		<input type="hidden" value="<%=Lsid %>" id="lsid" />
+		<input type="hidden" value="<%=SessionId %>" id="sid" />
+		<input type="hidden" value="" id="codeSeq" />
+		<input type="hidden" value="<%=headUrl %>" id="headUrl" />
+		<input type="hidden" value="<%=nickName %>" id="nickName" />
+		<input type="hidden" id="svcUrl" value='<%=remoteServiceUrl%>' />
+		<input type="hidden" value="<%=DateTime.Now.ToString(" yyyy-MM-dd ") %>" id="nowDate" />
+		<input type="hidden" id="baseUrl" value='<%=SysParams.Default.BaseDomainUrl%>' />
+		<input type="hidden" value="<%=sendOpenId %>" id="sendOpenId" />
+		<input type="hidden" value="<%=shortLinkNo %>" id="shortLinkNo" />	
+		<input type="hidden" value="<%=channelId %>" id="channelId" />	
+		
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery-weui.min.js"></script>
+		<script type="text/javascript" src="js/interact.min.js"></script>
+		<script type="text/javascript" src="js/exif.js"></script>
+		<script type="text/javascript" src="js/mobileBUGFix.mini.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript " src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript">
+			function audioAutoPlay(id){
+			    var audio = document.getElementById(id);
+				audio.play();
+			    document.addEventListener("WeixinJSBridgeReady", function () {
+			        audio.play();
+			    }, false);
+			    document.addEventListener('YixinJSBridgeReady', function() {
+			    	audio.play();
+			    }, false);
+			}
+			audioAutoPlay('bgmusic');
+			wx.config({
+				debug: false,
+				appId: '<%=WxAppId %>',
+				timestamp: '<%=Timestamp %>',
+				nonceStr: '<%=NonceStr %>',
+				signature: '<%=Signature %>',
+				jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ',
+					'onMenuShareWeibo', 'hideMenuItems'
+				]
+			});
+			var shareSvcUrl = "<%=remoteServiceUrl%>?t=ProcessUserAction&sid=<%=SessionId %>&umqUserOpenId=<%=UmqUserOpenId%>&actId=<%=actId%>";
+		</script>
+		<script type="text/javascript" src="js/orientation.js"></script>
+		<script type="text/javascript" src="js/upPhoto.js?ver=201802081600"></script>
+		<script type="text/javascript" src="js/hotcss.js"></script>
+		<script src="js/umq.mobile.wxapi.js?ver=0320180125" type="text/javascript"></script>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?7032382b4edb74ddac5474e18ae6252a";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

@@ -11,21 +11,34 @@ html,body{
     height: 100%;
     font-family: 'G0v1'; 
 }
-body{
-    background: url("../images/bg.png") no-repeat 50%;
-    background-size: cover;
-}
 .page{
     text-align: center;
+    width:100%;
+    height: 100%;
+    display: none;
+}
+.first-page{
+    display: block;
+    background: url("../images/first-bg.png") no-repeat 50%;
+    background-size: cover;
+}
+.first-page .btn{
+    position: absolute;
+    top: 50vh;
+    left: 30vw;
+}
+.second-page{
+    background: url("../images/second-bg.png") no-repeat 50%;
+    background-size: cover;
 }
 .pic-area{
     position: relative;
-    padding-top: 10vw;
+    padding-top: 15vw;
 }
 .upload{
-    width:75vw;
-    height: 100vw;
-    margin-left: 10vw;
+    width:70vw;
+    height: 70vw;
+    margin-left: 15vw;
     position: relative;
     border: 1px solid #dbdbdb;
     background:url("../images/plus.png") no-repeat center;
@@ -54,6 +67,9 @@ body{
     overflow: hidden;
     background: rgba(0, 0, 0, 0.5);
 }
+#J_file_box img{
+    max-width: 100%;
+}
 .btn{
     display: inline-block;
     width:40vw;
@@ -62,13 +78,13 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     line-height: 18vw;
+    color: #D9AD32;
 }
 .btn:hover{
     background-image: url("../images/btn-click.png");
 }
 .submit-btn{
     margin-top: 10vw;
-    color: #D9AD32;
 }
 .cancle{
     margin-top: 5vw;

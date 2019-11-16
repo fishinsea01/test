@@ -3,12 +3,18 @@ $(function(){
 
   var WHRatio = 0.75;
   var upPhotoUrl = "http://47.108.90.165:8080/api/headPhoto";
+
+  $("#start").click(function(){
+    $(".first-page").hide();
+    $(".second-page").show();
+  });
   // 图片处理功能
   function PictureEdit(){
     this.imageWrap = $('#J_upload_box');
     this.cropBox = $('#J_file_box');
     this.preImg = $('#J_file_box_img');
     this.cropImg = null;
+    this.cropper = new Cropper(document.getElementById("cropImg"), this.cropOption);
 
     this.uploadBtn = $('#J_file');
     this.cropBtn = $('#J_crop');
@@ -17,7 +23,8 @@ $(function(){
     this.pics = {};
     this.cropOption = {
        aspectRatio: WHRatio,
-       viewMode:3
+       viewMode:3,
+       autoCropArea:1
     };
     this.upload();
   }
@@ -58,26 +65,45 @@ $(function(){
           return;
         }
 
-        window
-        .lrz(file,{width: 300}) // 展示预览图
-        .then(function (rst) {
-          that.selectImg = true;
-          that.showCropBox();
+        var reader = new FileReader();  
+        reader.onload = function(evt) {  
+            that.selectImg = true;
+            that.showCropBox();
+            var replaceSrc = evt.target.result;  
+            // 更换cropper的图片  
+            that.cropper.replace(replaceSrc);
+            that.preImg.attr("src",URL.createObjectURL(file));
+            //$('#tailoringImg').cropper('replace', replaceSrc, false);// 默认false，适应高度，不失真  
+        }  
+        reader.readAsDataURL(file);  
+        // window
+        // .lrz(file,{width: 300}) // 展示预览图
+        // .then(function (rst) {
+        //   that.selectImg = true;
+        //   that.showCropBox();
 
-          that.preImg.load(function(){
-            // 触发图像裁剪
-            that.preImg.cropper(that.cropOption);
-          });
-          that.preImg.attr('src',rst.base64);
+        //   var reader = new FileReader();  
+        //   reader.onload = function(evt) {  
+        //       var replaceSrc = evt.target.result;  
+        //       // 更换cropper的图片  
+        //       $('#tailoringImg').cropper('replace', replaceSrc, false);// 默认false，适应高度，不失真  
+        //   }  
+        //   reader.readAsDataURL(file.files[0]);  
+        //   that.preImg.load(function(){
+        //     // 触发图像裁剪
+            
+        //     that.cropper = new Cropper(that.preImg[0], that.cropOption);
+        //   });
+        //   that.preImg.attr('src',rst.base64);
 
-        })
-        .catch(function (err) {
-          that.hideCropBox();
-          alert('读取图像失败！');
-        })
-        .always(function () {
+        // })
+        // .catch(function (err) {
+        //   that.hideCropBox();
+        //   alert('读取图像失败！');
+        // })
+        // .always(function () {
 
-        });
+        // });
     });
   };
 
@@ -89,7 +115,7 @@ $(function(){
   // 隐藏裁剪框
   PictureEdit.prototype.hideCropBox = function(){
     this.cropBox.hide();
-    this.preImg.cropper('destroy');
+    this.cropper.clear();
   };
 
 
@@ -100,11 +126,11 @@ $(function(){
     that.cancel();
     // 确认上传
     that.cropBtn.click(function(){
-      that.cropImg = that.preImg.cropper('getCroppedCanvas', { width: 200, height: 200 });
       if(!that.selectImg){
         alert("请先选择图片，再上传");
         return;
       }
+      that.cropImg = that.cropper.getCroppedCanvas({ width: 200, height: 200 });
       var data = that.cropImg.toDataURL();
       console.log('data', data);
       var delStr = "data:image/png;base64,";
@@ -119,6 +145,8 @@ $(function(){
     that.selectImg = false;
     that.cancelCropBtn.click(function(){
       that.hideCropBox();
+      $(".second-page").hide();
+      $(".first-page").show();
     });
   };
 
