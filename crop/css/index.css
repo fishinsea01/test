@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@font-face{
+    font-family: "G0v1"; 
+    src:url("../font/造字工房尚黑G0v1常规体.otf"),
+        url("../font/造字工房尚黑G0v1粗体.otf");
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    width:100%;
+    height: 100%;
+    font-family: 'G0v1'; 
+}
+body{
+    background: url("../images/bg.png") no-repeat 50%;
+    background-size: cover;
+}
+.page{
+    text-align: center;
+}
+.pic-area{
+    position: relative;
+    padding-top: 10vw;
+}
+.upload{
+    width:75vw;
+    height: 100vw;
+    margin-left: 10vw;
+    position: relative;
+    border: 1px solid #dbdbdb;
+    background:url("../images/plus.png") no-repeat center;
+    background-size: 20%;
+}
+.upload input[type="file"] {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.upload img{
+    width: 100%;
+}
+#J_file_box {
+    display: none;
+    z-index: 5009;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+}
+.btn{
+    display: inline-block;
+    width:40vw;
+    height: 18vw;
+    background-image: url("../images/btn.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    line-height: 18vw;
+}
+.btn:hover{
+    background-image: url("../images/btn-click.png");
+}
+.submit-btn{
+    margin-top: 10vw;
+    color: #D9AD32;
+}
+.cancle{
+    margin-top: 5vw;
+    color: white;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css" crossorigin="anonymous">
+    <script src="https://unpkg.com/cropperjs/dist/cropper.js" crossorigin="anonymous"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <style>
+    img{
+        width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div style="width: 200px;height:200px;">
+        <img src="images/0.jpg" id="image" alt="" srcset="">
+    </div>
+    <script>
+        const image = document.getElementById('image');
+        const cropper = new Cropper(image, {
+        aspectRatio: 16 / 9,
+        viewMode:3,
+        crop(event) {
+            console.log(event.detail.x);
+            console.log(event.detail.y);
+            console.log(event.detail.width);
+            console.log(event.detail.height);
+            console.log(event.detail.rotate);
+            console.log(event.detail.scaleX);
+            console.log(event.detail.scaleY);
+        },
+        });
+    </script>
+</body>
+</html>

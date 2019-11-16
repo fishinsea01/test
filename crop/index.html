@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/cropper.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+        [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+        [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+        [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+        [touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-x pan-y"],body /shadow-deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+        </style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+        /* .en-markup-crop-options {
+            top: 18px !important;
+            left: 50% !important;
+            margin-left: -100px !important;
+            width: 200px !important;
+            border: 2px rgba(255,255,255,.38) solid !important;
+            border-radius: 4px !important;
+        }
+        .en-markup-crop-options div div:first-of-type {
+            margin-left: 0px !important;
+        } */
+        </style>
+</head>
+<body>
+    <div class="page">
+        <div class="pic-area">           
+            <!-- 上传图片的预览区域 -->
+            <section class="upload-box" id="J_upload_box">
+                <div class="upload" id="J_file_wrap">
+                    <input type="file" accept="image/*" name="pic" id="J_file">
+                    <!-- 图片裁剪工作区域 -->
+                    <div id="J_file_box">
+                        <img src="" id="J_file_box_img" alt="">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="btn submit-btn" id="J_crop">确定上传</div>
+        <div class="cancle" id="J_cancel">取消</div>
+    </form>
+
+    <!-- 裁剪或取消 -->
+    <section class="btn-group" id="J_btn_group">
+        <span id="J_cancel">取消</span>
+        <span id="J_crop">裁剪</span>
+    </section>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/cropper.js"></script>
+    <script src="scripts/upload.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
