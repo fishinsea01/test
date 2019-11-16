@@ -1,7 +1,7 @@
 
 $(function(){
 
-  var WHRatio = 0.75;
+  var WHRatio = 1;
   var upPhotoUrl = "http://47.108.90.165:8080/api/headPhoto";
 
   $("#start").click(function(){
@@ -14,7 +14,13 @@ $(function(){
     this.cropBox = $('#J_file_box');
     this.preImg = $('#J_file_box_img');
     this.cropImg = null;
-    this.cropper = new Cropper(document.getElementById("cropImg"), this.cropOption);
+    this.cropper = new Cropper(document.getElementById("cropImg"), {
+      aspectRatio: WHRatio,
+      autoCropArea:1,
+      minCropBoxWidth:100,
+      minCropBoxHeight:100,
+      viewMode:3
+    });
 
     this.uploadBtn = $('#J_file');
     this.cropBtn = $('#J_crop');
@@ -23,7 +29,7 @@ $(function(){
     this.pics = {};
     this.cropOption = {
        aspectRatio: WHRatio,
-       viewMode:3,
+       //viewMode:3,
        autoCropArea:1
     };
     this.upload();
@@ -72,6 +78,7 @@ $(function(){
             var replaceSrc = evt.target.result;  
             // 更换cropper的图片  
             that.cropper.replace(replaceSrc);
+            that.cropper.setAspectRatio = WHRatio;
             that.preImg.attr("src",URL.createObjectURL(file));
             //$('#tailoringImg').cropper('replace', replaceSrc, false);// 默认false，适应高度，不失真  
         }  
