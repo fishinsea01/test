@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IFS | 广之森矩阵 | 追光而来</title>
+    <link rel="stylesheet" href="css/cropper.min.css">
+    <link rel="stylesheet" href="css/index.css?v=2019">
+    <style>
+        [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
+        [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
+        [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
+        [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
+        [touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+        body /shadow-deep/ [touch-action="pan-x pan-y"],body /shadow-deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
+    </style>
+</head>
+<body>
+    <audio src='mp3/success.mp3' id="success"></audio>
+    <div class="page first-page">
+        <div class="btn" id="start">上传照片</div>
+    </div>
+    <div class="page second-page">
+        <div class="pic-area">           
+            <!-- 上传图片的预览区域 -->
+            <section class="upload-box" id="J_upload_box">
+                <div class="upload" id="J_file_wrap">
+                    <input type="file" accept="image/*" name="pic" id="J_file">
+                    <!-- 图片裁剪工作区域 -->
+                    <div id="J_file_box">
+                        <img src="" id="cropImg" alt="">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="btn submit-btn" id="J_crop">确认上传</div>
+        <div class="cancle" id="J_cancel">取消</div>
+    </div>
+    <div class="page third-page">
+        <div class="pic-merge">   
+            <div class="pic-box" id="mergeBox">
+                <img src="images/0.jpg" id="userPic">
+                <img src="images/sk1.png" id="selK">
+            </div>      
+            <div class="k-box">
+                <div>     
+                    <img src="images/k1.png" alt="">
+                </div>
+                <div>
+                    <img src="images/k2.png" alt="">
+                </div>
+                <div>
+                    <img src="images/k3.png" alt="">
+                </div>
+                <div>
+                    <img src="images/k4.png" alt="">
+                </div>
+            </div>          
+        </div>
+        <a class="btn sure-sel">确认选择</a>
+        <div class="cancle" id="showCancel">取消</div>
+    </div>
+    <div class="page fourth-page">
+        <div class="pic-merge">   
+            <div class="pic-box" id="finPic">
+            </div>
+            <div class="savetxt">长按图片可保存至手机哦</div> 
+            <div class="rz-box">
+                    <div class="">~ 追光认证 ~</div>   
+                    <div>Light Walker 追光者身份认证</div>
+                    <div id="number"></div>
+            </div>  
+            <div>
+                <img src="images/close.png" class="close" alt="">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function audioAutoPlay(id) {
+            var audio = document.getElementById(id);
+            audio.play();
+             if(window.WeixinJSBridge){
+                WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+                    audio.play();
+                }, false);
+            }else{
+                document.addEventListener("WeixinJSBridgeReady", function() {
+                    WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+                        audio.play();
+                    });
+                 }, false);
+                   document.addEventListener('YixinJSBridgeReady', function () {
+                        audio.play();
+                   }, false);
+            }
+        }
+    </script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/cropper.min.js"></script>
+    <script src="scripts/upload.js"></script>
+    <script src="scripts/html2canvas.js"></script>
+    <script src="scripts/canvas2image.js"></script>
+    <script src="scripts/index.js?v=2019"></script>
+</body>
+</html>
