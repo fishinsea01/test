@@ -58,10 +58,10 @@ $(function(){
   function convert2canvas() {
     var pageObj = $('#mergeBox');
     var ele = pageObj[0];
-    var width = ele.offsetWidth-1; //获取dom 宽度
-    var height = ele.scrollHeight-1; 
+    var width = ele.offsetWidth; //获取dom 宽度
+    var height = ele.scrollHeight; 
     var canvas = document.createElement("canvas"); 
-    var scale = 2;
+    var scale = 1;
     canvas.width = width * scale; 
     canvas.height = height * scale; 
     canvas.getContext("2d").scale(scale, scale);
@@ -82,8 +82,8 @@ $(function(){
       context.imageSmoothingEnabled = false;
       var img = Canvas2Image.convertToJPEG(canvas, canvas.width, canvas.height);
       $(img).css({
-          "width": canvas.width / 2 + "px",
-          "height": canvas.height / 2 + "px",
+          "width": canvas.width + "px",
+          "height": canvas.height+ "px",
           "border": "0"
       });
       $("#finPic").empty().append(img);
